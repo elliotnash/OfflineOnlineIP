@@ -17,14 +17,14 @@ public enum Msg {
         SUCCESSFUL_CONNECTION("The player $player is connected in cracked version"),
         AUTH_SERVER_DOWN("The authenticator server is down.\n Please tell the server administrator"),
 
-        PLUGIN_DISABLE("The plugin is now disable !"),
-        PLUGIN_ENABLE("The plugin is now enable !"),
-        PLAYER_ADDED_TO_ALLOWED_CRACKED_LIST("$player is now allowed to used a no-official version"),
-        PLAYER_REMOVED_FROM_ALLOWED_CRACKED_LIST("$player is no longer allowed to used a no-official version"),
-        LIST_ALLOWED_PLAYERS("The allowed player are : "),
+        PLUGIN_DISABLE("The plugin is now disabled!"),
+        PLUGIN_ENABLE("The plugin is now enabled!"),
+        PLAYER_ADDED_TO_ALLOWED_CRACKED_LIST("$player is now allowed to used a non official version"),
+        PLAYER_REMOVED_FROM_ALLOWED_CRACKED_LIST("$player is no longer allowed to used a non official version"),
+        LIST_ALLOWED_PLAYERS("The allowed players are : "),
 
-        TOO_LONG_PASSWORD("$player have a too long name"),
-        INVALID_CHARACTER("$player contain an invalid character");
+        TOO_LONG_PASSWORD("$player has a too long name"),
+        INVALID_CHARACTER("$player contains an invalid character");
 
         private String value;
 
@@ -36,22 +36,22 @@ public enum Msg {
                 sender.sendMessage(TextComponent.fromLegacyText(""));
                 sender.sendMessage(TextComponent.fromLegacyText(
                         ChatColor.GOLD + "" + ChatColor.STRIKETHROUGH + "----------" + ChatColor.GOLD + "["
-                                + ChatColor.DARK_GREEN + "AllowCrack " + ChatColor.GRAY
+                                + ChatColor.DARK_GREEN + "OfflineOnline " + ChatColor.GRAY
                                 + Main.getInstance().getDescription().getVersion() + "" + ChatColor.GOLD + "]"
                                 + ChatColor.GOLD + "" + ChatColor.STRIKETHROUGH + "----------"));
                 sender.sendMessage(TextComponent.fromLegacyText(ChatColor.GOLD
-                        + "/ac enable - " + ChatColor.DARK_GREEN + "enable the plugin"));
+                        + "/oo enable - " + ChatColor.DARK_GREEN + "enable the plugin"));
                 sender.sendMessage(TextComponent.fromLegacyText(ChatColor.GOLD
-                        + "/ac disable - " + ChatColor.DARK_GREEN + "disable the plugin"));
+                        + "/oo disable - " + ChatColor.DARK_GREEN + "disable the plugin"));
                 sender.sendMessage(TextComponent.fromLegacyText(ChatColor.GOLD
-                        + "/ac add <pseudo> - " + ChatColor.DARK_GREEN + "Add a cracked player to the allowed list"));
+                        + "/oo add <ip> <usernames> - " + ChatColor.DARK_GREEN + "Add a cracked player to the allowed list"));
                 sender.sendMessage(TextComponent.fromLegacyText(ChatColor.GOLD
-                        + "/ac remove <pseudo> - " + ChatColor.DARK_GREEN
+                        + "/oo remove <ip> - " + ChatColor.DARK_GREEN
                         + "Remove a cracked player from the allowed list"));
                 sender.sendMessage(TextComponent.fromLegacyText(ChatColor.GOLD
-                        + "/ac list - " + ChatColor.DARK_GREEN + "List the cracked players"));
+                        + "/oo list - " + ChatColor.DARK_GREEN + "List the cracked players"));
                 sender.sendMessage(TextComponent.fromLegacyText(ChatColor.GOLD
-                        + "/ac reload - " + ChatColor.DARK_GREEN + "reload the configuration file"));
+                        + "/oo reload - " + ChatColor.DARK_GREEN + "reload the configuration file"));
 
                 sender.sendMessage(TextComponent.fromLegacyText(ChatColor.GOLD + ""
                         + ChatColor.STRIKETHROUGH + "------------------------------"));

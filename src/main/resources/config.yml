@@ -1,6 +1,6 @@
 Settings:
-  authServer: "survival"
-  mainServer: "survival"
+  authServer: "lobby"
+  mainServer: "lobby"
 msg:
   base:
     prefix: "§9[§3Login§9]> §2"
@@ -13,12 +13,12 @@ msg:
     successfulConnection: "The player $player is connected"
     authServerDown: "The authenticator server is down. \n sPlease tell the server administrator"
   adminCommands:
-    pluginDisable: "The plugin is now disabled !"
-    pluginEnable: "The plugin is now enabled !"
-    playerAddedToAllowedCrackedList: "$player is now allowed to used a no-official version"
-    playerRemovedFromAllowedCrackedList: "$player is no longer allowed to used a no-official version"
-    listAllowedPlayers: "The allowed player are : "
+    pluginDisable: "The plugin is now disabled!"
+    pluginEnable: "The plugin is now enabled!"
+    playerAddedToAllowedCrackedList: "$player is now allowed to used a non official version"
+    playerRemovedFromAllowedCrackedList: "$player is no longer allowed to used a non official version"
+    listAllowedPlayers: "The allowed players are : "
   invalidPlayer:
-    tooLongPassword: "$player have a too long name"
-    invalidCharacter: "$player contain an invalid character"
-allowedPlayers:
+    tooLongPassword: "$player has a too long name"
+    invalidCharacter: "$player contains an invalid character"
+allowedIPs:

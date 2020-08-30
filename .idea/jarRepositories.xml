@@ -4,12 +4,7 @@
     <remote-repository>
       <option name="id" value="bungeecord-repo" />
       <option name="name" value="bungeecord-repo" />
-      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="sonatype" />
-      <option name="name" value="sonatype" />
-      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
+      <option name="url" value="https://hub.spigotmc.org/nexus/content/groups/public/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="sonatype" />
@@ -22,9 +17,14 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="spigotmc" />
-      <option name="name" value="spigotmc" />
-      <option name="url" value="https://hub.spigotmc.org/nexus/content/groups/public/net/md-5/" />
+      <option name="id" value="sonatype" />
+      <option name="name" value="sonatype" />
+      <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="bungeecord-repo" />
+      <option name="name" value="bungeecord-repo" />
+      <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -34,16 +34,11 @@
     <remote-repository>
       <option name="id" value="bungeecord-repo" />
       <option name="name" value="bungeecord-repo" />
-      <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+      <option name="url" value="https://hub.spigotmc.org/nexus/content/groups/public/net/md-5/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="bungeecord-repo" />
-      <option name="name" value="bungeecord-repo" />
-      <option name="url" value="https://hub.spigotmc.org/nexus/content/groups/public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="bungeecord-repo" />
-      <option name="name" value="bungeecord-repo" />
+      <option name="id" value="spigotmc" />
+      <option name="name" value="spigotmc" />
       <option name="url" value="https://hub.spigotmc.org/nexus/content/groups/public/net/md-5/" />
     </remote-repository>
     <remote-repository>
@@ -52,9 +47,14 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="bungeecord-repo" />
+      <option name="name" value="bungeecord-repo" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="sonatype" />
       <option name="name" value="sonatype" />
-      <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
     </remote-repository>
   </component>
 </project>

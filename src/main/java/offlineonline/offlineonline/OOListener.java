@@ -1,6 +1,8 @@
 package offlineonline.offlineonline;
 
 
+import net.md_5.bungee.api.connection.ProxiedPlayer;
+import net.md_5.bungee.api.event.LoginEvent;
 import offlineonline.offlineonline.util.Msg;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
@@ -11,8 +13,14 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.connection.InitialHandler;
 import net.md_5.bungee.event.EventHandler;
 
+import java.math.BigInteger;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 public class OOListener implements Listener {
@@ -22,7 +30,7 @@ public class OOListener implements Listener {
 
         public OOListener(Main main, String invalid) {
                 this.main = main;
-                this.kick_invalid_name = ChatColor.translateAlternateColorCodes('&', invalid);
+                this.kick_invalid_name = ChatColor.translateAlternateColorCodes('§', invalid);
         }
 
         @EventHandler(priority = 64)
@@ -53,8 +61,7 @@ public class OOListener implements Listener {
                 }
 
 
-
-                if (Main.getManageCache().contains(e.getConnection().getName())) {
+                if (Main.getManageCache().contains(e.getConnection().getAddress().getAddress().getHostAddress(), e.getConnection().getName())) {
                         ServerInfo target = ProxyServer.getInstance()
                                 .getServerInfo(Main.getConfig().getString("Settings.authServer"));
 
@@ -70,15 +77,14 @@ public class OOListener implements Listener {
 
                         this.main.getLogger().info("\u001B[31m" + Msg.SUCCESSFUL_CONNECTION.toString()
                                 .replace("$player", e.getConnection().getName()) + "\u001B[0m");
-
+                        Main.getInstance().getLogger().info("setting online mode to false");
                         handler.setOnlineMode(false);
                 }
 
-
         }
+
 
         public boolean validate(String username) {
                 return (username != null) && (this.pattern.matcher(username).matches());
         }
-
 }

@@ -1,4 +1,5 @@
 name: Offlineonline
-version: ${project.version}
+version: 1.5-BETA
+author: Elliot Nash
 main: offlineonline.offlineonline.Main
 description: Allow offline accounts online

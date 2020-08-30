@@ -13,11 +13,17 @@ import net.md_5.bungee.config.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public final class Main extends Plugin {
 
@@ -49,20 +55,67 @@ public final class Main extends Plugin {
         Msg.load();
         getLogger().info("Config initialized");
 
-        //loads config into cache
-        List<String> allowedPlayers = config.getStringList("allowedPlayers");
+        //loads domains/ips into cache
+        List<String> allowedIPs = config.getStringList("allowedIPs");
 
-        manageCache.setPlayerCache(allowedPlayers);
+        new Thread(() -> {
 
-        for (String player : manageCache.playerCacheList()){
-            sendConsoleMsg(player);
-        }
+            LinkedList<List<String>> ips = new LinkedList<>();
+            for (String domain : config.getStringList("allowedIPs")){
+                String[] splitDomain = domain.split(":");
+                List<String> ipUser = new ArrayList<>();
+                try {
+                    if (splitDomain.length<2) {
+                        ipUser.add(InetAddress.getByName(splitDomain[0]).getHostAddress());
+                        ips.add(ipUser);
+                    } else {
+                        ipUser.add(InetAddress.getByName(splitDomain[0]).getHostAddress());
+                        ipUser.addAll(Arrays.asList(splitDomain).subList(1, splitDomain.length));
+                        ips.add(ipUser);
+                    }
+
+                } catch (UnknownHostException e) {
+                    getLogger().warning("domain "+domain+" does not resolve");
+                }
+            }
+            manageCache.setPlayerCache(ips);
+
+        }).start();
 
         //initialise les Listener+command
         getProxy().getPluginManager().registerCommand(this, new OOCommand(this));
         getProxy().getPluginManager().registerListener(this, new OOListener(this
                 , Msg.NOT_ALLOWED_CRACKED_USER.toString()));
         getLogger().info("loaded");
+
+        //set runnable to update host names
+        getProxy().getScheduler().schedule(this, new Runnable() {
+            @Override
+            public void run() {
+                new Thread (() -> {
+                    LinkedList<List<String>> ips = new LinkedList<>();
+                    for (String domain : config.getStringList("allowedIPs")){
+                        String[] splitDomain = domain.split(":");
+                        List<String> ipUser = new ArrayList<>();
+                        try {
+                            if (splitDomain.length<2) {
+                                ipUser.add(InetAddress.getByName(splitDomain[0]).getHostAddress());
+                                ips.add(ipUser);
+                            } else {
+                                ipUser.add(InetAddress.getByName(splitDomain[0]).getHostAddress());
+                                ipUser.addAll(Arrays.asList(splitDomain).subList(1, splitDomain.length));
+                                ips.add(ipUser);
+                            }
+
+                        } catch (UnknownHostException e) {
+                            getLogger().warning("domain "+domain+" does not resolve");
+                        }
+                    }
+                    manageCache.setPlayerCache(ips);
+
+                }).start();
+            }
+        }, 30, 30, TimeUnit.MINUTES);
 
     }
 

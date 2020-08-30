@@ -6,7 +6,7 @@
 
     <groupId>OfflineOnline</groupId>
     <artifactId>offlineonline</artifactId>
-    <version>1.4-BETA</version>
+    <version>1.5-BETA</version>
     <packaging>jar</packaging>
 
     <name>OfflineOnline</name>
@@ -42,7 +42,7 @@
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
-            <version>1.16-R0.3-SNAPSHOT</version>
+            <version>1.16-R0.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
