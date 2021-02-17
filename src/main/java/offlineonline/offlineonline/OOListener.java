@@ -85,6 +85,7 @@ public class OOListener implements Listener {
 
 
         public boolean validate(String username) {
-                return (username != null) && (this.pattern.matcher(username).matches());
+                //TODO may change later, just want to fix for geyser
+                return true;
         }
 }

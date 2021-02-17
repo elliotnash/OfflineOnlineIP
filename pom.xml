@@ -6,7 +6,7 @@
 
     <groupId>OfflineOnline</groupId>
     <artifactId>offlineonline</artifactId>
-    <version>1.5-BETA</version>
+    <version>1.6-BETA</version>
     <packaging>jar</packaging>
 
     <name>OfflineOnline</name>
